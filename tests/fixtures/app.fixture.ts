@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { test as base } from '@playwright/test';
 import { HomePage } from '../pom/pages/HomePage';
 import { AuthModal } from '../pom/pages/AuthModal';
@@ -17,6 +18,7 @@ type MyFixtures = {
 export const test = base.extend<MyFixtures>({
   homePage: async ({ page }, use) => {
     const homePage = new HomePage(page);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     await use(homePage);
   },
   authModal: async ({ page }, use) => {
