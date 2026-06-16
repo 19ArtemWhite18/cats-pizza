@@ -1,4 +1,4 @@
-import { test } from '../../fixtures/app.fixture';
+import { guestTest as test } from '../../fixtures/app.fixture';
 
 test('Catalog opens and shows carts', async ({ homePage }) => {
   await homePage.open();

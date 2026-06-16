@@ -1,4 +1,4 @@
-import { test } from '../../fixtures/app.fixture.ts';
+import { guestTest as test } from '../../fixtures/app.fixture.ts';
 import { CleanupApi } from '../api/CleanupApi.ts';
 import { testUsers } from '../data/testData.ts';
 
