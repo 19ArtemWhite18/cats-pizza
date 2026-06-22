@@ -1,7 +1,9 @@
 import { type Page, expect } from '@playwright/test';
 
 export class CheckoutPage {
-  constructor(private page: Page) {
+  private page: Page;
+
+  constructor(page: Page) {
     this.page = page;
   }
 
@@ -29,5 +31,17 @@ export class CheckoutPage {
     await this.page.getByTestId('approveOrder').click();
     await expect(this.page.getByTestId('modalTitle')).toHaveText('Заказ оформлен');
     await this.page.getByTestId('closeSubmittedModalButton').click();
+  }
+
+  async submitWithoutAddress() {
+    await this.page.getByTestId('approveOrder').click();
+  }
+
+  async assertCheckoutOpened() {
+    await expect(this.page.getByTestId('modalTitle')).toHaveText('Оформление доставки');
+  }
+
+  async assertValidationError(message: string) {
+    await expect(this.page.getByText(message)).toBeVisible();
   }
 }

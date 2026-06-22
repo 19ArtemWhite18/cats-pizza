@@ -25,4 +25,16 @@ test.describe('Auth', () => {
     await authModal.signUp('Tecт', createdUserEmail, testUsers.existing.password);
     await authModal.assertSignedIn();
   });
+
+  test('Shows error for wrong password', async ({ homePage, authModal }) => {
+    await homePage.open();
+    await authModal.signIn(testUsers.existing.email, 'wrong-password');
+    await authModal.assertError('Неверный email или пароль');
+  });
+
+  test('Reject duplicate registration', async ({ homePage, authModal }) => {
+    await homePage.open();
+    await authModal.signUp('Name', testUsers.existing.email, testUsers.existing.password);
+    await authModal.assertError('Пользователь с таким email уже существует');
+  });
 });

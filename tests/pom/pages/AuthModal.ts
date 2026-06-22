@@ -1,7 +1,9 @@
 import { type Page, expect } from '@playwright/test';
 
 export class AuthModal {
-  constructor(private page: Page) {
+  private page: Page;
+
+  constructor(page: Page) {
     this.page = page;
   }
 
@@ -32,5 +34,9 @@ export class AuthModal {
 
   async assertSignedIn() {
     await expect(this.page.getByTestId('signOutButton')).toBeVisible();
+  }
+
+  async assertError(message: string) {
+    await expect(this.page.getByText(message)).toBeVisible();
   }
 }
