@@ -14,3 +14,7 @@ export const cartWithOneItem = {
     },
   ],
 };
+
+export const emptyCart = {
+  items: [],
+};

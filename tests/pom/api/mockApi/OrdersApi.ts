@@ -1,27 +1,27 @@
 import { type Page } from '@playwright/test';
-import { cartWithOneItem, emptyCart } from '../../mockData/cart';
+import { oneOrder, emptyOrders } from '../../mockData/orders';
 
-export class CartApi {
+export class OrdersApi {
   private page: Page;
 
   constructor(page: Page) {
     this.page = page;
   }
 
-  async setCartWithOneItem() {
-    await this.page.route('*/**/api/cart', async (route) => {
+  async setOrdersWithOneItem() {
+    await this.page.route('*/**/api/orders', async (route) => {
       await route.fulfill({
         status: 200,
-        body: JSON.stringify(cartWithOneItem),
+        body: JSON.stringify(oneOrder),
       });
     });
   }
 
-  async setEmptyCart() {
+  async setEmptyOrders() {
     await this.page.route('*/**/api/cart', async (route) => {
       await route.fulfill({
         status: 200,
-        body: JSON.stringify(emptyCart),
+        body: JSON.stringify(emptyOrders),
       });
     });
   }
