@@ -161,3 +161,11 @@ npm run lint
   - `src/cart/CartContext.tsx`
 
 ---
+
+## Запуск docker-контейнера
+
+Первоначальный (построение билда + запуск контейнера):
+docker build -t cats-pizza .; docker run --rm cats-pizza
+
+Запуск контейнера в интерактивном режиме
+docker run --rm -it cats-pizza bash
